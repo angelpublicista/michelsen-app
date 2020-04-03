@@ -1,0 +1,20 @@
+html, body{
+    height: 100vh;
+    overflow: hidden;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.content-section{
+    padding: 2em;
+    max-height: 500px;
+    overflow-y: scroll;
+}
+
+.content-section::-webkit-scrollbar {
+    -webkit-appearance: none;
+}

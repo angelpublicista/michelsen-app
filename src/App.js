@@ -1,26 +1,29 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Route, Router } from 'react-router';
+import PropTypes from 'prop-types';
+import Login from './views/Login';
+import './style.css';
+import Dashboard from './components/Dashboard/Dashboard';
+import Home from './views/Home';
+import MisCreditos from './components/MisCreditos/MisCreditos';
+import MiPerfil from './components/MiPerfil/MiPerfil';
+import Credito from './components/MisCreditos/Credito/Credito';
+import { makeStyles, createMuiTheme  } from '@material-ui/core/styles';
 
-function App() {
+
+function App(props) {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router history={props.history}>
+        <div className="App">
+            <Route exact path="/" component={Login} />
+            <Route exact path="/panel-admin" component={Home} />
+            <Route exact path="/mis-creditos" component={MisCreditos} />
+            <Route exact path="/mi-perfil" component={MiPerfil} />
+            <Route path="/mis-creditos/credito/:id" component={Credito} />
+        </div>
+    </Router>
   );
 }
+
 
 export default App;
