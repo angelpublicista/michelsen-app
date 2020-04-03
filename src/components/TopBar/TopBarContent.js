@@ -16,6 +16,8 @@ import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import {withRouter} from 'react-router-dom';
 import Button from '@material-ui/core/Button';
+import Avatar from '@material-ui/core/Avatar';
+import ImageProfile from './ImageProfile';
 
 const theme = createMuiTheme({
   palette: {
@@ -156,7 +158,7 @@ function TopBarContent(props) {
           aria-haspopup="true"
           color="inherit"
         >
-          <AccountCircle />
+          <ImageProfile />
         </IconButton>
         <p>Profile</p>
       </MenuItem>
@@ -165,7 +167,7 @@ function TopBarContent(props) {
 
   return (
     <div className={classes.grow}>
-      <AppBar position="static">
+      <AppBar position="static" color="default">
         <Toolbar>
           <IconButton
             edge="start"
@@ -194,7 +196,7 @@ function TopBarContent(props) {
               onClick={handleProfileMenuOpen}
               color="inherit"
             >
-              <AccountCircle />
+              <ImageProfile />
               <Typography className={classes.userName}>
                   {props.nameUser}
               </Typography>

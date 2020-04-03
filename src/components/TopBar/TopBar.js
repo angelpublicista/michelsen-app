@@ -10,6 +10,7 @@ class TopBar extends Component{
             nameUser : '',
             emailUser : '',
             userPicture: '',
+            imageProfile: '',
             isLogout: false
         }
 
@@ -28,11 +29,13 @@ class TopBar extends Component{
     
         if(fbData){
             this.setState({
-                nameUser: fbData.NomCln + " " + fbData.PrApellidoCln
+                nameUser: fbData.NomCln + " " + fbData.PrApellidoCln,
+                imageProfile: fbData.picture
             })
         } else if(googleData){
             this.setState({
-                nameUser: googleData.NomCln + " " + googleData.PrApellidoCln
+                nameUser: googleData.NomCln + " " + googleData.PrApellidoCln,
+                imageProfile: googleData.picture
             })
         } else if(loginData){
             this.setState({
@@ -55,7 +58,7 @@ class TopBar extends Component{
           )
       }
       return(
-          <TopBarContent title={this.props.title} nameUser={this.state.nameUser}  onLogout={this.onLogout}/>
+          <TopBarContent avatar={this.state.imageProfile} title={this.props.title} nameUser={this.state.nameUser}  onLogout={this.onLogout}/>
       )
     }
 }

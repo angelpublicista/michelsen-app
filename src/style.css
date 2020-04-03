@@ -18,3 +18,15 @@ body{
 .content-section::-webkit-scrollbar {
     -webkit-appearance: none;
 }
+
+
+@media (max-width: 480px){
+    .sidebar-menu{
+        width: 70%;
+        top: 0;
+        left: 0;
+        position: fixed;
+        padding-top: 3em;
+        z-index: 2;
+    }
+}

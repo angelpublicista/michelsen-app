@@ -60,11 +60,13 @@ const useStyles = makeStyles((theme) => ({
      flexFlow: "row nowrap",
      justifyContent: "center",
      alignItems: "center",
-     backgroundColor: "#1c4a98",
-     color: "#fff",
      cursor: 'pointer',
      borderRadius: "3px",
      fontSize: "1em"
+  },
+
+  iconSocial:{
+    marginRight: theme.spacing(1)
   }
 }));
 
@@ -148,7 +150,7 @@ export default function SignIn(props) {
                     onClick={renderProps.onClick}
                     disabled={renderProps.disabled}
                   >
-                    <FacebookIcon /> Ingresa con Facebook
+                    <FacebookIcon className={classes.iconSocial} /> Ingresa con Facebook
                   </Button>
                 )}
               />
@@ -169,7 +171,7 @@ export default function SignIn(props) {
                     onClick={renderProps.onClick}
                     disabled={renderProps.disabled}
                   >
-                    <MailIcon /> Continúa con Google
+                    <MailIcon className={classes.iconSocial} /> Continúa con Google
                   </Button>
                 )}
                 >

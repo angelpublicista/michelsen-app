@@ -46,7 +46,15 @@ class MisCreditos extends Component{
             })
         } else if(googleData){
             this.setState({
-                nameUser: googleData.name
+                nameUser: googleData.NomCln,
+                lastNameUser: googleData.PrApellidoCln + " " + googleData.SgApellidoCln,
+                emailUser: googleData.emailCln,
+                addressUser: '',
+                idUser: googleData.IdCln,
+                mobilePhone: googleData.CelularCln,
+                fixedPhone: googleData.TelResidenciaCln,
+                docUser: googleData.DocuCln,
+                city: ""
             })
         } else if(loginData){
             this.setState({
@@ -58,8 +66,7 @@ class MisCreditos extends Component{
                 mobilePhone: loginData.CelularCln,
                 fixedPhone: loginData.TelResidenciaCln,
                 docUser: loginData.DocuCln,
-                city: ""
-                
+                city: ""   
             })
         }
     }
