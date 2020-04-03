@@ -32,10 +32,6 @@ const useStyles = makeStyles((theme) => ({
       borderBottom: "1px solid #ccc",
       paddingBottom: theme.spacing(1)
     },
-    secondaryHeading: {
-      fontSize: theme.typography.pxToRem(15),
-      color: theme.palette.text.secondary,
-    },
 
     paper:{
         padding: theme.spacing(3)

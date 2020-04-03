@@ -7,6 +7,7 @@ import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
+import Paper from '@material-ui/core/Paper';
 
 const theme = createMuiTheme({
     palette: {
@@ -46,16 +47,15 @@ const useStyles = makeStyles({
     pos: {
       marginBottom: 12,
     },
-
     heading: {
-        fontSize: theme.typography.pxToRem(15),
-        flexBasis: '33.33%',
-        flexShrink: 0,
+        fontSize: theme.typography.pxToRem(20),
+        marginLeft: theme.spacing(2),
+        borderBottom: "1px solid #ccc",
+        paddingBottom: theme.spacing(1)
     },
-      secondaryHeading: {
-        fontSize: theme.typography.pxToRem(15),
-        color: theme.palette.text.secondary,
-    },
+    paper:{
+        padding: theme.spacing(3)
+    }
   });
 
 
@@ -70,9 +70,10 @@ function ContentCredits(props){
 
     return(
         <div className="content-section content-profile">
-             <Grid container spacing={2}>
+             <Paper className={classes.paper}>
+                    <Grid container spacing={2}>
                             <Grid item xs={12}>
-                                <Typography variant="h5" component="h2">
+                                <Typography className={classes.heading} variant="h5" component="h2">
                                     Información General
                                 </Typography> 
                                 <br></br>
@@ -149,7 +150,8 @@ function ContentCredits(props){
                                         fullWidth
                                     />
                                 </Grid>
-            </Grid>
+                        </Grid>
+             </Paper>
         </div>
     );
 }
