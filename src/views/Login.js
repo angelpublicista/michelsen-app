@@ -14,7 +14,8 @@ class Login extends Component{
             social:"Facebook",
             correo: '',
             clave: '',
-            idUser: ''
+            idUser: '',
+            validation: true
         }
 
         this.responseFacebook = this.responseFacebook.bind(this)
@@ -49,9 +50,14 @@ class Login extends Component{
            this.props.users.data.map((currentValue, index, array) => {
                if(currentValue.emailCln === correo && currentValue.DocuCln === clave){
                     localStorage.setItem("loginData", JSON.stringify(currentValue))
-                    this.setState({isLogged: true})
+                    this.setState({
+                        isLogged: true,
+                        validation: true
+                    })
                } else {
-                   console.log("El usuario no existe")
+                   this.setState({
+                       validation: false
+                   })
                }
             })
        }
@@ -77,9 +83,14 @@ class Login extends Component{
                         social: 'Facebook'
                     }));
             
-                    this.setState({isLogged: true})
+                    this.setState({
+                        isLogged: true,
+                        validation: true
+                    })
                } else {
-                   console.log("El usuario no existe")
+                   this.setState({
+                        validation: false
+                   })
                }
             })
         }   
@@ -105,9 +116,14 @@ class Login extends Component{
                         social: 'google'
                     }));
                     
-                    this.setState({isLogged: true})
+                    this.setState({
+                        isLogged: true,
+                        validation: true
+                    })
                } else {
-                   console.log("El usuario no existe")
+                    this.setState({
+                        validation: false
+                    })
                }
             })
         }
@@ -122,7 +138,6 @@ class Login extends Component{
 
     
     render(){
-        
 
         if (this.state.isLogged) {
             return(<Redirect to="/panel-admin" />); 
@@ -134,7 +149,8 @@ class Login extends Component{
                 handleInput={this.handleInput}
                 submitForm = {this.submitForm}
                 onFailure={this.onFailure} 
-                responseGoogle={this.responseGoogle} 
+                responseGoogle={this.responseGoogle}
+                validation={this.state.validation}
             />
         );
     }

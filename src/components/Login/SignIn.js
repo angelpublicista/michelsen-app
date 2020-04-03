@@ -19,6 +19,8 @@ import MailIcon from '@material-ui/icons/Mail';
 //import FacebookLogin from "react-facebook-login";
 import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props'
 import GoogleLogin from "react-google-login";
+import Errors from './Errors';
+
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -67,11 +69,15 @@ const useStyles = makeStyles((theme) => ({
 
   iconSocial:{
     marginRight: theme.spacing(1)
+  },
+
+  displayErrors:{
+    marginTop: theme.spacing(1)
   }
 }));
 
 export default function SignIn(props) {
-  const classes = useStyles();
+  const classes = useStyles(); 
 
   return (
     <div className={classes.signInForm} style={{overflow: "hidden"}}>
@@ -175,8 +181,8 @@ export default function SignIn(props) {
                   </Button>
                 )}
                 >
-              </GoogleLogin>  
-              
+              </GoogleLogin>
+              <Errors validate={props.validation} />
             </form>
           </div>
         </Container>

@@ -77,7 +77,7 @@ function SidebarContent(props){
                         </ListItemIcon>
                         <Typography variant="inherit">Mi Perfil</Typography>
                     </MenuItem>
-                    <MenuItem className={classes.menuItem}>
+                    <MenuItem onClick={()=> history.push('/informacion')} className={classes.menuItem}>
                         <ListItemIcon>
                             <InfoOutlinedIcon className={classes.iconSidebar}/>
                         </ListItemIcon>

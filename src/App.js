@@ -8,6 +8,7 @@ import Home from './views/Home';
 import MisCreditos from './components/MisCreditos/MisCreditos';
 import MiPerfil from './components/MiPerfil/MiPerfil';
 import Credito from './components/MisCreditos/Credito/Credito';
+import Info from './components/Informacion/Info';
 import { makeStyles, createMuiTheme  } from '@material-ui/core/styles';
 
 
@@ -20,6 +21,7 @@ function App(props) {
             <Route exact path="/mis-creditos" component={MisCreditos} />
             <Route exact path="/mi-perfil" component={MiPerfil} />
             <Route path="/mis-creditos/credito/:id" component={Credito} />
+            <Route exact path="/informacion" component={Info}/>
         </div>
     </Router>
   );
