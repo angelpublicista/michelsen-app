@@ -59,7 +59,7 @@ const useStyles = makeStyles({
   });
 
 
-export default function ContentCredits(props){
+function ContentCredits(props){
 
     const classes = useStyles();
     const [expanded, setExpanded] = React.useState(false);
@@ -82,7 +82,7 @@ export default function ContentCredits(props){
                                         id="name"
                                         label="Nombres"
                                         variant="outlined"
-                                        value="Pepito"
+                                        value={props.nameUser}
                                         fullWidth
                                     />
                                 </Grid>
@@ -91,7 +91,7 @@ export default function ContentCredits(props){
                                         id="last-name"
                                         label="Apellidos"
                                         variant="outlined"
-                                        value="Pepito"
+                                        value={props.lastNameUser}
                                         fullWidth
                                     />
                                 </Grid>
@@ -100,7 +100,7 @@ export default function ContentCredits(props){
                                         id="mobile-phone"
                                         label="Celular"
                                         variant="outlined"
-                                        value="3102767676"
+                                        value={props.mobilePhone}
                                         fullWidth
                                     />
                                 </Grid>
@@ -109,7 +109,7 @@ export default function ContentCredits(props){
                                         id="document"
                                         label="N°. Documento"
                                         variant="outlined"
-                                        value="3102767676"
+                                        value={props.docUser}
                                         fullWidth
                                     />
                                 </Grid>
@@ -118,7 +118,7 @@ export default function ContentCredits(props){
                                         id="city"
                                         label="Ciudad"
                                         variant="outlined"
-                                        value="Bogotá"
+                                        value={props.city}
                                         fullWidth
                                     />
                                 </Grid>
@@ -127,7 +127,7 @@ export default function ContentCredits(props){
                                         id="address"
                                         label="Dirección"
                                         variant="outlined"
-                                        value="Calle 123 #45-67"
+                                        value={props.addressUser}
                                         fullWidth
                                     />
                                 </Grid>
@@ -136,16 +136,16 @@ export default function ContentCredits(props){
                                         id="email"
                                         label="Email"
                                         variant="outlined"
-                                        value="pepito123@gmail.com"
+                                        value={props.emailUser}
                                         fullWidth
                                     />
                                 </Grid>
                                 <Grid item xs={12} sm={6}>
                                     <TextField
-                                        id="email"
+                                        id="tel-fijo"
                                         label="Tel Fijo"
                                         variant="outlined"
-                                        value="1234567"
+                                        value={props.fixedPhone}
                                         fullWidth
                                     />
                                 </Grid>
@@ -153,3 +153,5 @@ export default function ContentCredits(props){
         </div>
     );
 }
+
+export default ContentCredits;

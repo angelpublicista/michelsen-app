@@ -65,10 +65,16 @@ class Login extends Component{
                if(currentValue.emailCln === correo){
                     localStorage.setItem("fbData", JSON.stringify({
                         token: response.token,
-                        email: response.email,
-                        name: response.name,
+                        emailCln: currentValue.emailCln,
+                        NomCln: currentValue.NomCln,
+                        PrApellidoCln: currentValue.PrApellidoCln,
+                        SgApellidoCln: currentValue.SgApellidoCln,
+                        CelularCln: currentValue.CelularCln,
+                        TelResidenciaCln: currentValue.TelResidenciaCln,
+                        DocuCln: currentValue.DocuCln,
                         idUser: currentValue.IdCln,
-                        picture: response.picture.data.url
+                        picture: response.picture.data.url,
+                        social: 'Facebook'
                     }));
             
                     this.setState({isLogged: true})
@@ -87,10 +93,15 @@ class Login extends Component{
                if(currentValue.emailCln === correo){
                     localStorage.setItem("googleData", JSON.stringify({
                         token: response.token,
-                        email: response.profileObj.email,
-                        name: response.profileObj.name,
-                        picture: response.profileObj.imageUrl,
+                        emailCln: currentValue.emailCln,
+                        NomCln: currentValue.NomCln,
+                        PrApellidoCln: currentValue.PrApellidoCln,
+                        SgApellidoCln: currentValue.SgApellidoCln,
+                        CelularCln: currentValue.CelularCln,
+                        TelResidenciaCln: currentValue.TelResidenciaCln,
+                        DocuCln: currentValue.DocuCln,
                         idUser: currentValue.IdCln,
+                        picture: response.profileObj.imageUrl,
                         social: 'google'
                     }));
                     

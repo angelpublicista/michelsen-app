@@ -28,11 +28,11 @@ class TopBar extends Component{
     
         if(fbData){
             this.setState({
-                nameUser: fbData.name
+                nameUser: fbData.NomCln + " " + fbData.PrApellidoCln
             })
         } else if(googleData){
             this.setState({
-                nameUser: googleData.name
+                nameUser: googleData.NomCln + " " + googleData.PrApellidoCln
             })
         } else if(loginData){
             this.setState({

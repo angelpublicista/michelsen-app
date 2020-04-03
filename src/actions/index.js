@@ -13,7 +13,6 @@ export const getUsers = () =>{
         http.get('clientes/')
         .then((response) => {
             if(response.data)
-              //console.log(response.data);
               dispatch(completeGetUsers(response.data));
         })
         .catch((err) => {
