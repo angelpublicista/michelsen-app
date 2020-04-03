@@ -20,19 +20,6 @@ import MailIcon from '@material-ui/icons/Mail';
 import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props'
 import GoogleLogin from "react-google-login";
 
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-        Fundaciones Michelsen
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
-
 const useStyles = makeStyles((theme) => ({
   paper: {
     padding: theme.spacing(4),
@@ -90,32 +77,32 @@ export default function SignIn(props) {
           <CssBaseline />
           <div className={classes.paper}>
             <img src={Logo} width="100%" />
-            <form className={classes.form} noValidate>
+            <form className={classes.form}>
               <TextField
-                onChange={props.handleInputMail}
+                onChange={props.handleInput}
                 variant="outlined"
                 margin="normal"
                 required
                 fullWidth
                 id="email"
                 label="Email"
-                name="email"
+                name="correo"
                 autoComplete="email"
                 autoFocus
               />
               <TextField
-                onChange={props.handleInputPass}
+                onChange={props.handleInput}
                 variant="outlined"
                 margin="normal"
                 required
                 fullWidth
-                name="password"
+                name="clave"
                 label="Clave"
                 type="password"
                 id="password"
                 autoComplete="current-password"
               />
-              
+              {/*
               <Grid container alignItems="center">
                 <Grid item xs>
                   <FormControlLabel
@@ -129,19 +116,21 @@ export default function SignIn(props) {
                   </Link>
                 </Grid>
               </Grid>
+              */
+              }
               <Button
+                onClick={props.submitForm}
                 type="submit"
                 fullWidth
                 variant="contained"
                 color="primary"
                 className={classes.submit}
-                onClick={props.handleSubmit}
               >
                 INICIAR SESIÓN
               </Button>
 
               <Typography component="p" align="center">
-                o inicia sesión con
+                o bien
               </Typography>
               <FacebookLogin
                 appId="252175469160651"
@@ -159,7 +148,7 @@ export default function SignIn(props) {
                     onClick={renderProps.onClick}
                     disabled={renderProps.disabled}
                   >
-                    <FacebookIcon /> Ingresar con Facebook
+                    <FacebookIcon /> Ingresa con Facebook
                   </Button>
                 )}
               />
@@ -180,7 +169,7 @@ export default function SignIn(props) {
                     onClick={renderProps.onClick}
                     disabled={renderProps.disabled}
                   >
-                    <MailIcon /> Ingresar con Google
+                    <MailIcon /> Continúa con Google
                   </Button>
                 )}
                 >

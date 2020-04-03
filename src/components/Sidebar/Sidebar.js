@@ -18,12 +18,15 @@ class Sidebar extends Component{
     }
     
     componentWillMount(){
+        
         let fbData = JSON.parse(localStorage.getItem('fbData'));
         let googleData = JSON.parse(localStorage.getItem('googleData'));
-    
-        if(!fbData && !googleData){
+        let loginData = JSON.parse(localStorage.getItem('loginData'));
+        
+        if(!loginData && !fbData && !googleData){
             this.setState({isLogout: true})
         }
+        
     
         if(fbData){
             this.setState({
@@ -33,7 +36,12 @@ class Sidebar extends Component{
             this.setState({
                 nameUser: googleData.name
             })
+        } else if(loginData){
+            this.setState({
+                nameUser: loginData.name
+            })
         }
+        
     }
     
     onLogout(e){

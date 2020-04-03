@@ -13,7 +13,7 @@ export const getUsers = () =>{
         http.get('clientes/')
         .then((response) => {
             if(response.data)
-              console.log(response.data);
+              //console.log(response.data);
               dispatch(completeGetUsers(response.data));
         })
         .catch((err) => {
@@ -56,8 +56,11 @@ export const getLoginUser = (userMail, userPass) =>{
         //TODO request con axios
         http.get('clientes/login/"'+userMail+'"/'+userPass+'/')
         .then((response) => {
-            if(response.data)
-              dispatch(completeLoginUser(response.data));
+            if(response.data){
+                dispatch(completeLoginUser(response.data));
+            } else {
+                return null;
+            }
         })
         .catch((err) => {
             dispatch(errorLoginUser(err));

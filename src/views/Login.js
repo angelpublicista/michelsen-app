@@ -2,8 +2,9 @@ import React, {Component} from 'react';
 import SignIn from './../components/Login/SignIn';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { getLoginUser } from '../actions';
+import { getLoginUser, getUsers } from '../actions';
 import {Redirect} from 'react-router-dom';
+import axios from 'axios';
 
 class Login extends Component{
     constructor(){
@@ -19,64 +20,88 @@ class Login extends Component{
         this.responseFacebook = this.responseFacebook.bind(this)
         this.responseGoogle = this.responseGoogle.bind(this)
         this.onFailure = this.onFailure.bind(this)
-        this.handleInputMail = this.handleInputMail.bind(this)
-        this.handleInputPass = this.handleInputPass.bind(this)
-        this.handleSubmit = this.handleSubmit.bind(this)
+        this.handleInput = this.handleInput.bind(this)
+        this.submitForm = this.submitForm.bind(this)
     }
 
-   
-
     componentWillMount(){
-        if (localStorage.getItem("fbData") || localStorage.getItem("googleData")) {
+        this.props.getUsers();
+
+        if (localStorage.getItem("fbData") || localStorage.getItem("googleData") || localStorage.getItem("loginData")) {
             this.setState({
                 isLogged: true
             })
         }
     }
 
-    handleInputMail(e){
-        let valor = e.target.value
+    handleInput(e){
         this.setState({
-            correo: valor
+            [e.target.name]: e.target.value
         })
     }
 
-    handleInputPass(e){
-        let valor = e.target.value
-        this.setState({
-            clave: valor
-        })
-    }
+    submitForm(e){
+        e.preventDefault();
+       const correo = this.state.correo;
+       const clave = this.state.clave;
 
-
-    handleSubmit(e){
-        e.preventDefault()
-        let email = this.state.correo
-        let pass = this.state.clave
+       if(this.props.users.data){
+           this.props.users.data.map((currentValue, index, array) => {
+               if(currentValue.emailCln === correo && currentValue.DocuCln === clave){
+                    localStorage.setItem("loginData", JSON.stringify(currentValue))
+                    this.setState({isLogged: true})
+               } else {
+                   console.log("El usuario no existe")
+               }
+            })
+       }
     }
 
     responseFacebook(response){
-        localStorage.setItem("fbData", JSON.stringify({
-            token: response.token,
-            email: response.email,
-            name: response.name,
-            picture: response.picture.data.url
-        }));
+        let correo = response.email;
 
-        this.setState({isLogged: true})
-        
+        if(this.props.users.data){
+           this.props.users.data.map((currentValue, index, array) => {
+               if(currentValue.emailCln === correo){
+                    localStorage.setItem("fbData", JSON.stringify({
+                        token: response.token,
+                        email: response.email,
+                        name: response.name,
+                        idUser: currentValue.IdCln,
+                        picture: response.picture.data.url
+                    }));
+            
+                    this.setState({isLogged: true})
+               } else {
+                   console.log("El usuario no existe")
+               }
+            })
+        }   
     }
 
     responseGoogle(response){
-        localStorage.setItem("googleData", JSON.stringify({
-            token: response.token,
-            email: response.profileObj.email,
-            name: response.profileObj.name,
-            picture: response.profileObj.imageUrl,
-            social: 'google'
-        }));
+        let correo = response.profileObj.email;
 
-        this.setState({isLogged: true})
+        if(this.props.users.data){
+           this.props.users.data.map((currentValue, index, array) => {
+               if(currentValue.emailCln === correo){
+                    localStorage.setItem("googleData", JSON.stringify({
+                        token: response.token,
+                        email: response.profileObj.email,
+                        name: response.profileObj.name,
+                        picture: response.profileObj.imageUrl,
+                        idUser: currentValue.IdCln,
+                        social: 'google'
+                    }));
+                    
+                    this.setState({isLogged: true})
+               } else {
+                   console.log("El usuario no existe")
+               }
+            })
+        }
+
+        
     }
 
 
@@ -87,17 +112,16 @@ class Login extends Component{
     
     render(){
         
-        
+
         if (this.state.isLogged) {
             return(<Redirect to="/panel-admin" />); 
         }
-        
+
         return(
             <SignIn 
                 responseFacebook={this.responseFacebook} 
-                handleInputMail={this.handleInputMail}
-                handleInputPass={this.handleInputPass}
-                handleSubmit={this.handleSubmit}
+                handleInput={this.handleInput}
+                submitForm = {this.submitForm}
                 onFailure={this.onFailure} 
                 responseGoogle={this.responseGoogle} 
             />
@@ -108,13 +132,13 @@ class Login extends Component{
 //Esta función convierte el valor de la store en props para el componente
 function mapStateToProps(state){
     return{
-        users: state.getLoginUser
+        users: state.getUsers
     }
 }
 
 function mapDispatchToProps(dispatch){
     return bindActionCreators({
-        getLoginUser
+        getUsers
     }, dispatch);
 }
 
