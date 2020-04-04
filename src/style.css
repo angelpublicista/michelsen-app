@@ -1,3 +1,6 @@
-
-
-
+@media (max-width: 480px) {
+    .card-credit{
+        max-width: 310px;
+    }
+    
+}

@@ -1,7 +1,5 @@
 import React from 'react';
-
 import Logo from './../../assets/img/logo_blanco.png';
-import Paper from '@material-ui/core/Paper';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import clsx from 'clsx';
 import Drawer from '@material-ui/core/Drawer';
@@ -173,20 +171,12 @@ function Content(props){
       onClose={handleMobileMenuClose}
     >
       <MenuItem>
-        <IconButton aria-label="show 4 new mails" color="inherit">
-          <Badge badgeContent={4} color="secondary">
-            <MailIcon />
-          </Badge>
-        </IconButton>
-        <p>Messages</p>
-      </MenuItem>
-      <MenuItem>
         <IconButton aria-label="show 11 new notifications" color="inherit">
-          <Badge badgeContent={11} color="secondary">
+          <Badge badgeContent={0} color="secondary">
             <NotificationsIcon />
           </Badge>
         </IconButton>
-        <p>Notifications</p>
+        <p>Notificaciones</p>
       </MenuItem>
       <MenuItem onClick={handleProfileMenuOpen}>
         <IconButton
@@ -197,7 +187,7 @@ function Content(props){
         >
           <ImageProfile />
         </IconButton>
-        <p>Profile</p>
+        <p>Mi perfil</p>
       </MenuItem>
     </Menu>
   );
@@ -267,6 +257,8 @@ function Content(props){
                     </div>
                 </Toolbar>
             </AppBar>
+            {renderMobileMenu}
+            {renderMenu}
             <Drawer
                 className={classes.drawer}
                 variant="persistent"
@@ -277,7 +269,7 @@ function Content(props){
                 }}
             >
                 <div className={classes.drawerHeader}>
-                <img src={Logo} />
+                <img src={Logo} onClick={()=>history.push('/')} />
                 <IconButton onClick={handleDrawerClose}>
                     {theme.direction === 'ltr' ? <ChevronLeftIcon className={classes.iconArrow} /> : <ChevronRightIcon />}
                 </IconButton>

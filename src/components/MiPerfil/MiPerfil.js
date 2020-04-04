@@ -76,7 +76,7 @@ class MisCreditos extends Component{
         return(
             <div className="mi-perfil">
                 <Grid container>
-                   <Grid item xs={12} id="main">
+                   <Grid item id="main">
                        <Section title="Mi perfil"
                         section={<ContentProfile
                             nameUser={this.state.nameUser}

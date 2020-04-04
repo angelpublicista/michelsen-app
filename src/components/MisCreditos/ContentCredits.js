@@ -75,7 +75,7 @@ export default function ContentCredits(){
         <div className="content-section content-credits">
             <Grid container spacing={2}>
                 <Grid item xs={12} sm={4}>
-                    <Card className={classes.root} variant="outlined">
+                    <Card className={classes.root + " card-credit"} variant="outlined">
                         <CardHeader title="PRÓXIMO PAGO" className={classes.cardHeader}></CardHeader>
                         <CardContent>
                             <Typography className={classes.title} color="textSecondary" gutterBottom>
@@ -92,7 +92,7 @@ export default function ContentCredits(){
                 </Grid>
 
                 <Grid item xs={12} sm={4}>
-                    <Card className={classes.root} variant="outlined">
+                    <Card className={classes.root + " card-credit"} variant="outlined">
                         <CardHeader title="ÚLTIMO PAGO" className={classes.cardHeader}></CardHeader>
                         <CardContent>
                             <Typography className={classes.title} color="textSecondary" gutterBottom>
@@ -109,7 +109,7 @@ export default function ContentCredits(){
                 </Grid>
 
                 <Grid item xs={12} sm={4}>
-                    <Card className={classes.root} variant="outlined">
+                    <Card className={classes.root + " card-credit"} variant="outlined">
                         <CardHeader title="DEUDA ACTUAL" className={classes.cardHeader}></CardHeader>
                         <CardContent>
                             <Typography className={classes.title} color="textSecondary" gutterBottom>
