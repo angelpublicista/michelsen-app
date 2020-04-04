@@ -11,11 +11,7 @@ class MisCreditos extends Component{
     render(){
         return(
             <div className="mis-creditos">
-               <Grid container>
-                   <Grid item xs={12} id="main">
-                       <Section title="Mis créditos" section={<ContentCredits/>} />
-                   </Grid>
-               </Grid>
+                <Section title="Mis créditos" section={<ContentCredits/>} />
             </div>
         );
     }

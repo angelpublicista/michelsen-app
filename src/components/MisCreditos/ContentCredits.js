@@ -125,6 +125,7 @@ export default function ContentCredits(){
                     </Card>
                 </Grid>
 
+               
                 <Grid item xs={12}>
                     <TableContainer component={Paper}>
                         <CardHeader title="TODOS MIS CRÉDITOS" className={classes.cardHeader}></CardHeader>
