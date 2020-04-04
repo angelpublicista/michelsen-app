@@ -1,16 +1,13 @@
 import React from 'react';
 import { Route, Router } from 'react-router';
-import PropTypes from 'prop-types';
 import Login from './views/Login';
 import './style.css';
-import Dashboard from './components/Dashboard/Dashboard';
 import Home from './views/Home';
 import MisCreditos from './components/MisCreditos/MisCreditos';
 import MiPerfil from './components/MiPerfil/MiPerfil';
 import Credito from './components/MisCreditos/Credito/Credito';
 import Info from './components/Informacion/Info';
-import { makeStyles, createMuiTheme  } from '@material-ui/core/styles';
-
+import {mostrarMensaje, handleSidebar} from './assets/js/main';
 
 function App(props) {
   return (

@@ -3,6 +3,7 @@ import TopBar from './../TopBar/TopBar';
 import Grid from '@material-ui/core/Grid';
 import Sidebar from './../Sidebar/Sidebar';
 import ContentProfile from './../MiPerfil/ContentProfile';
+import { logDOM } from '@testing-library/react';
 
 
 
@@ -37,36 +38,37 @@ class MisCreditos extends Component{
                 nameUser: fbData.NomCln,
                 lastNameUser: fbData.PrApellidoCln + " " + fbData.SgApellidoCln,
                 emailUser: fbData.emailCln,
-                addressUser: '',
+                addressUser: fbData.DirCln,
                 idUser: fbData.IdCln,
                 mobilePhone: fbData.CelularCln,
                 fixedPhone: fbData.TelResidenciaCln,
                 docUser: fbData.DocuCln,
-                city: ""
+                city: fbData.CiuCln
+                
             })
         } else if(googleData){
             this.setState({
                 nameUser: googleData.NomCln,
                 lastNameUser: googleData.PrApellidoCln + " " + googleData.SgApellidoCln,
                 emailUser: googleData.emailCln,
-                addressUser: '',
+                addressUser: googleData.DirCln,
                 idUser: googleData.IdCln,
                 mobilePhone: googleData.CelularCln,
                 fixedPhone: googleData.TelResidenciaCln,
                 docUser: googleData.DocuCln,
-                city: ""
+                city: googleData.CiuCln
             })
         } else if(loginData){
             this.setState({
                 nameUser: loginData.NomCln,
                 lastNameUser: loginData.PrApellidoCln + " " + loginData.SgApellidoCln,
                 emailUser: loginData.emailCln,
-                addressUser: '',
+                addressUser: loginData.DirCln,
                 idUser: loginData.IdCln,
                 mobilePhone: loginData.CelularCln,
                 fixedPhone: loginData.TelResidenciaCln,
                 docUser: loginData.DocuCln,
-                city: ""   
+                city: loginData.CiuCln   
             })
         }
     }

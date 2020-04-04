@@ -2,7 +2,8 @@ import React, {Component} from 'react';
 import TopBar from './../TopBar/TopBar';
 import Grid from '@material-ui/core/Grid';
 import Sidebar from './../Sidebar/Sidebar';
-import ContentCredits from './../MisCreditos/ContentCredits'
+import ContentCredits from './../MisCreditos/ContentCredits';
+
 
 
 
