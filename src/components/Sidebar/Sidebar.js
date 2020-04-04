@@ -17,7 +17,7 @@ class Sidebar extends Component{
         this.onLogout = this.onLogout.bind(this);
     }
     
-    componentWillMount(){
+    componentDidMount(){
         
         let fbData = JSON.parse(localStorage.getItem('fbData'));
         let googleData = JSON.parse(localStorage.getItem('googleData'));

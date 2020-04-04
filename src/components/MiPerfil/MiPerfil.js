@@ -22,7 +22,7 @@ class MisCreditos extends Component{
         }
     }
 
-    componentWillMount(){
+    componentDidMount(){
         let fbData = JSON.parse(localStorage.getItem('fbData'));
         let googleData = JSON.parse(localStorage.getItem('googleData'));
         let loginData = JSON.parse(localStorage.getItem('loginData'));

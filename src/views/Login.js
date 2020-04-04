@@ -25,7 +25,7 @@ class Login extends Component{
         this.submitForm = this.submitForm.bind(this)
     }
 
-    componentWillMount(){
+    componentDidMount(){
         this.props.getUsers();
 
         if (localStorage.getItem("fbData") || localStorage.getItem("googleData") || localStorage.getItem("loginData")) {
