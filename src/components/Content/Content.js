@@ -21,9 +21,8 @@ import Badge from '@material-ui/core/Badge';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import MailIcon from '@material-ui/icons/Mail';
-import ImageProfile from './../TopBar/ImageProfile';
+import ImageProfile from '../TopBar/ImageProfile';
 import {withRouter} from 'react-router-dom';
-
 import ListSidebar from './ListSidebar';
 
 const drawerWidth = 240;
@@ -33,6 +32,8 @@ const useStyles = makeStyles((theme) => ({
       display: 'flex',
     },
     appBar: {
+      backgroundColor: '#f8f8f8',
+      color: '#1c4a98',
       transition: theme.transitions.create(['margin', 'width'], {
         easing: theme.transitions.easing.sharp,
         duration: theme.transitions.duration.leavingScreen,
@@ -47,7 +48,7 @@ const useStyles = makeStyles((theme) => ({
       }),
     },
     menuButton: {
-      marginRight: theme.spacing(2),
+      marginRight: 36,
     },
     hide: {
       display: 'none',
@@ -56,8 +57,13 @@ const useStyles = makeStyles((theme) => ({
       width: drawerWidth,
       flexShrink: 0,
     },
+    iconArrow:{
+      color: "#fff"
+    },
     drawerPaper: {
       width: drawerWidth,
+      backgroundColor: "#001b3d",
+      color: "#fff"
     },
     drawerHeader: {
       display: 'flex',
@@ -109,7 +115,7 @@ const useStyles = makeStyles((theme) => ({
  
 
 
-function SidebarContent(props){
+function Content(props){
     const classes = useStyles();
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
@@ -271,12 +277,13 @@ function SidebarContent(props){
                 }}
             >
                 <div className={classes.drawerHeader}>
+                <img src={Logo} />
                 <IconButton onClick={handleDrawerClose}>
-                    {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+                    {theme.direction === 'ltr' ? <ChevronLeftIcon className={classes.iconArrow} /> : <ChevronRightIcon />}
                 </IconButton>
                 </div>
                 <Divider />
-                <ListSidebar />
+                <ListSidebar onLogout={props.onLogout} />
             </Drawer>
             <main
                 className={clsx(classes.content, {
@@ -284,20 +291,10 @@ function SidebarContent(props){
                 })}
             >
                 <div className={classes.drawerHeader} />
-                {props.ContentSidebar}
+                {props.section}
             </main>
         </div>
-        /*
-        <aside className="sidebar-menu">
-            <Paper className={classes.paper}>
-                <div className={classes.imgBrand}>
-                    <img src={Logo} />
-                </div>
-                <ListSidebar onLogout={props.onLogout}/>
-            </Paper>
-        </aside>
-        */
     );
 }
 
-export default withRouter(SidebarContent);
+export default withRouter(Content);

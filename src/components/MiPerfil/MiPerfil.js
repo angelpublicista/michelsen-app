@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
-import TopBar from './../TopBar/TopBar';
 import Grid from '@material-ui/core/Grid';
-import Sidebar from './../Sidebar/Sidebar';
+import Section from './../Content/Section';
 import ContentProfile from './../MiPerfil/ContentProfile';
 import { logDOM } from '@testing-library/react';
 
@@ -76,25 +75,21 @@ class MisCreditos extends Component{
     render(){
         return(
             <div className="mi-perfil">
-               <Grid container>
-                   <Grid item xs={12} sm={2}>
-                       <Sidebar />
-                   </Grid>
-                   <Grid item xs={12} sm={10}>
-                       <div className="content" style={{height:"100vh"}}>
-                          <TopBar title="Mi Perfil" />
-                          <ContentProfile
-                              nameUser={this.state.nameUser}
-                              lastNameUser={this.state.lastNameUser}
-                              emailUser={this.state.emailUser}
-                              addressUser={this.state.addressUser}
-                              idUser={this.state.idUser}
-                              mobilePhone={this.state.mobilePhone}
-                              fixedPhone={this.state.fixedPhone}
-                              docUser={this.state.docUser}
-                              city={this.state.city}
-                          />
-                       </div>
+                <Grid container>
+                   <Grid item xs={12} id="main">
+                       <Section title="Mi perfil"
+                        section={<ContentProfile
+                            nameUser={this.state.nameUser}
+                            lastNameUser={this.state.lastNameUser}
+                            emailUser={this.state.emailUser}
+                            addressUser={this.state.addressUser}
+                            idUser={this.state.idUser}
+                            mobilePhone={this.state.mobilePhone}
+                            fixedPhone={this.state.fixedPhone}
+                            docUser={this.state.docUser}
+                            city={this.state.city}
+                        />} 
+                        />
                    </Grid>
                </Grid>
             </div>

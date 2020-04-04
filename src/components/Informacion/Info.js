@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
-import TopBar from './../TopBar/TopBar';
 import Grid from '@material-ui/core/Grid';
-import Sidebar from './../Sidebar/Sidebar';
+import Section from './../Content/Section';
 import ContentInfo from './ContentInfo';
 
 
@@ -11,14 +10,8 @@ class Info extends Component{
         return(
             <div className="info">
                <Grid container>
-                   <Grid item xs={12} sm={2} className="containerSidebar" id="main-sidebar">
-                       <Sidebar />
-                   </Grid>
-                   <Grid item xs className="containerContent">
-                       <div className="content" style={{height:"100vh"}}>
-                          <TopBar title="Información" />
-                          <ContentInfo />
-                       </div>
+                   <Grid item xs={12} id="main">
+                       <Section title="Información" section={<ContentInfo/>} />
                    </Grid>
                </Grid>
             </div>

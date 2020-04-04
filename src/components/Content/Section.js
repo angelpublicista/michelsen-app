@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
-import SidebarContent from './SidebarContent';
+import Content from './Content';
 import {Redirect} from 'react-router-dom';
 
 
-class Sidebar extends Component{
+class Section extends Component{
     constructor(){
         super();
         this.state={
@@ -22,6 +22,8 @@ class Sidebar extends Component{
         let fbData = JSON.parse(localStorage.getItem('fbData'));
         let googleData = JSON.parse(localStorage.getItem('googleData'));
         let loginData = JSON.parse(localStorage.getItem('loginData'));
+
+        console.log(loginData)
         
         if(!loginData && !fbData && !googleData){
             this.setState({isLogout: true})
@@ -30,15 +32,17 @@ class Sidebar extends Component{
     
         if(fbData){
             this.setState({
-                nameUser: fbData.name
+                nameUser: fbData.NomCln + " " + fbData.PrApellidoCln,
+                userPicture: fbData.picture
             })
         } else if(googleData){
             this.setState({
-                nameUser: googleData.name
+                nameUser: googleData.NomCln + " " + googleData.PrApellidoCln,
+                userPicture: googleData.picture
             })
         } else if(loginData){
             this.setState({
-                nameUser: loginData.name
+                nameUser: loginData.NomCln + " " + loginData.PrApellidoCln
             })
         }
         
@@ -58,9 +62,9 @@ class Sidebar extends Component{
             )
         }  
         return(
-            <SidebarContent title={this.props.title} ContentSidebar={this.props.ContentSidebar} onLogout={this.onLogout}/>
+            <Content title={this.props.title} section={this.props.section} nameUser={this.state.nameUser} onLogout={this.onLogout}/>
         )
     }
 }
 
-export default Sidebar;
+export default Section;
