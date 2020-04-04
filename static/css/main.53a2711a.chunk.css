@@ -1,0 +1,2 @@
+body,html{height:100vh;overflow:hidden}body{margin:0;padding:0;box-sizing:border-box}.content-section{padding:2em;max-height:500px;overflow-y:scroll}.content-section::-webkit-scrollbar{-webkit-appearance:none}@media (max-width:480px){.sidebar-menu{width:70%;top:0;left:0;position:fixed;padding-top:3em;z-index:2}}
+/*# sourceMappingURL=main.53a2711a.chunk.css.map */
