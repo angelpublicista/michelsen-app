@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/michelsen-app/static/css/main.53a2711a.chunk.css",
-    "main.js": "/michelsen-app/static/js/main.4f553d2e.chunk.js",
-    "main.js.map": "/michelsen-app/static/js/main.4f553d2e.chunk.js.map",
+    "main.js": "/michelsen-app/static/js/main.a7b9daa3.chunk.js",
+    "main.js.map": "/michelsen-app/static/js/main.a7b9daa3.chunk.js.map",
     "runtime-main.js": "/michelsen-app/static/js/runtime-main.54f075b7.js",
     "runtime-main.js.map": "/michelsen-app/static/js/runtime-main.54f075b7.js.map",
     "static/js/2.beec54d7.chunk.js": "/michelsen-app/static/js/2.beec54d7.chunk.js",
     "static/js/2.beec54d7.chunk.js.map": "/michelsen-app/static/js/2.beec54d7.chunk.js.map",
     "index.html": "/michelsen-app/index.html",
-    "precache-manifest.379dc02f983a001af938fd6fc3d8b30f.js": "/michelsen-app/precache-manifest.379dc02f983a001af938fd6fc3d8b30f.js",
+    "precache-manifest.e55c55e1b656e62cf2dd981ac0fb20ac.js": "/michelsen-app/precache-manifest.e55c55e1b656e62cf2dd981ac0fb20ac.js",
     "service-worker.js": "/michelsen-app/service-worker.js",
     "static/css/main.53a2711a.chunk.css.map": "/michelsen-app/static/css/main.53a2711a.chunk.css.map",
     "static/js/2.beec54d7.chunk.js.LICENSE.txt": "/michelsen-app/static/js/2.beec54d7.chunk.js.LICENSE.txt",
@@ -20,6 +20,6 @@
     "static/js/runtime-main.54f075b7.js",
     "static/js/2.beec54d7.chunk.js",
     "static/css/main.53a2711a.chunk.css",
-    "static/js/main.4f553d2e.chunk.js"
+    "static/js/main.a7b9daa3.chunk.js"
   ]
 }

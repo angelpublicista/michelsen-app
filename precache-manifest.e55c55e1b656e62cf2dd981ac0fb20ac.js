@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "ecb3986dfe3126ee38a6a9f8eb9d6b45",
+    "revision": "55c3b64fa25b95fb418f30cd03d36673",
     "url": "/michelsen-app/index.html"
   },
   {
-    "revision": "02bcd7901b07f5a7da4c",
+    "revision": "cf9b89d88123f8c50d05",
     "url": "/michelsen-app/static/css/main.53a2711a.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/michelsen-app/static/js/2.beec54d7.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "02bcd7901b07f5a7da4c",
-    "url": "/michelsen-app/static/js/main.4f553d2e.chunk.js"
+    "revision": "cf9b89d88123f8c50d05",
+    "url": "/michelsen-app/static/js/main.a7b9daa3.chunk.js"
   },
   {
     "revision": "64f4c6dfa892cb8fbe78",

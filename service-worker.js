@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/michelsen-app/precache-manifest.379dc02f983a001af938fd6fc3d8b30f.js"
+  "/michelsen-app/precache-manifest.e55c55e1b656e62cf2dd981ac0fb20ac.js"
 );
 
 self.addEventListener('message', (event) => {
