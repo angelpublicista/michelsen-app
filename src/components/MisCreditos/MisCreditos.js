@@ -12,14 +12,8 @@ class MisCreditos extends Component{
         return(
             <div className="mis-creditos">
                <Grid container>
-                   <Grid item xs={12} sm={2} className="containerSidebar" id="main-sidebar">
-                       <Sidebar />
-                   </Grid>
-                   <Grid item xs className="containerContent">
-                       <div className="content" style={{height:"100vh"}}>
-                          <TopBar title="Mis Créditos" />
-                          <ContentCredits />
-                       </div>
+                   <Grid item xs={12} id="main-sidebar">
+                       <Sidebar title="Mis créditos" ContentSidebar={<ContentCredits/>} />
                    </Grid>
                </Grid>
             </div>

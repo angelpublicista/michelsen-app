@@ -58,7 +58,7 @@ class Sidebar extends Component{
             )
         }  
         return(
-            <SidebarContent  onLogout={this.onLogout}/>
+            <SidebarContent title={this.props.title} ContentSidebar={this.props.ContentSidebar} onLogout={this.onLogout}/>
         )
     }
 }
