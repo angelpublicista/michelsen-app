@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/michelsen-app/static/css/main.53a2711a.chunk.css",
-    "main.js": "/michelsen-app/static/js/main.a7b9daa3.chunk.js",
-    "main.js.map": "/michelsen-app/static/js/main.a7b9daa3.chunk.js.map",
-    "runtime-main.js": "/michelsen-app/static/js/runtime-main.54f075b7.js",
-    "runtime-main.js.map": "/michelsen-app/static/js/runtime-main.54f075b7.js.map",
-    "static/js/2.beec54d7.chunk.js": "/michelsen-app/static/js/2.beec54d7.chunk.js",
-    "static/js/2.beec54d7.chunk.js.map": "/michelsen-app/static/js/2.beec54d7.chunk.js.map",
-    "index.html": "/michelsen-app/index.html",
-    "precache-manifest.e55c55e1b656e62cf2dd981ac0fb20ac.js": "/michelsen-app/precache-manifest.e55c55e1b656e62cf2dd981ac0fb20ac.js",
-    "service-worker.js": "/michelsen-app/service-worker.js",
-    "static/css/main.53a2711a.chunk.css.map": "/michelsen-app/static/css/main.53a2711a.chunk.css.map",
-    "static/js/2.beec54d7.chunk.js.LICENSE.txt": "/michelsen-app/static/js/2.beec54d7.chunk.js.LICENSE.txt",
-    "static/media/bg-creditos.jpg": "/michelsen-app/static/media/bg-creditos.bbf8f659.jpg",
-    "static/media/logo-fundaciones.svg": "/michelsen-app/static/media/logo-fundaciones.249929bb.svg",
-    "static/media/logo_blanco.png": "/michelsen-app/static/media/logo_blanco.2c595ab0.png"
+    "main.css": "/demo/michelsen/app/static/css/main.53a2711a.chunk.css",
+    "main.js": "/demo/michelsen/app/static/js/main.3cb56958.chunk.js",
+    "main.js.map": "/demo/michelsen/app/static/js/main.3cb56958.chunk.js.map",
+    "runtime-main.js": "/demo/michelsen/app/static/js/runtime-main.a9283681.js",
+    "runtime-main.js.map": "/demo/michelsen/app/static/js/runtime-main.a9283681.js.map",
+    "static/js/2.beec54d7.chunk.js": "/demo/michelsen/app/static/js/2.beec54d7.chunk.js",
+    "static/js/2.beec54d7.chunk.js.map": "/demo/michelsen/app/static/js/2.beec54d7.chunk.js.map",
+    "index.html": "/demo/michelsen/app/index.html",
+    "precache-manifest.ade8b74ffdb020768122f54367bf4a18.js": "/demo/michelsen/app/precache-manifest.ade8b74ffdb020768122f54367bf4a18.js",
+    "service-worker.js": "/demo/michelsen/app/service-worker.js",
+    "static/css/main.53a2711a.chunk.css.map": "/demo/michelsen/app/static/css/main.53a2711a.chunk.css.map",
+    "static/js/2.beec54d7.chunk.js.LICENSE.txt": "/demo/michelsen/app/static/js/2.beec54d7.chunk.js.LICENSE.txt",
+    "static/media/bg-creditos.jpg": "/demo/michelsen/app/static/media/bg-creditos.bbf8f659.jpg",
+    "static/media/logo-fundaciones.svg": "/demo/michelsen/app/static/media/logo-fundaciones.249929bb.svg",
+    "static/media/logo_blanco.png": "/demo/michelsen/app/static/media/logo_blanco.2c595ab0.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.54f075b7.js",
+    "static/js/runtime-main.a9283681.js",
     "static/js/2.beec54d7.chunk.js",
     "static/css/main.53a2711a.chunk.css",
-    "static/js/main.a7b9daa3.chunk.js"
+    "static/js/main.3cb56958.chunk.js"
   ]
 }
