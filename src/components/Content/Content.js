@@ -88,6 +88,10 @@ const useStyles = makeStyles((theme) => ({
       marginLeft: 0,
     },
 
+    imgBrand:{
+      width: "70%"
+    },
+
     sectionDesktop: {
         display: 'none',
         [theme.breakpoints.up('md')]: {
@@ -269,7 +273,7 @@ function Content(props){
                 }}
             >
                 <div className={classes.drawerHeader}>
-                <img src={Logo} onClick={()=>history.push('/')} />
+                <img src={Logo} className={classes.imgBrand} onClick={()=>history.push('/')} />
                 <IconButton onClick={handleDrawerClose}>
                     {theme.direction === 'ltr' ? <ChevronLeftIcon className={classes.iconArrow} /> : <ChevronRightIcon />}
                 </IconButton>
