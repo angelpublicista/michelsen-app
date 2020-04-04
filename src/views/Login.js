@@ -78,6 +78,8 @@ class Login extends Component{
                         CelularCln: currentValue.CelularCln,
                         TelResidenciaCln: currentValue.TelResidenciaCln,
                         DocuCln: currentValue.DocuCln,
+                        DirCln: currentValue.DirCln,
+                        CiuCln: currentValue.CiuCln,
                         idUser: currentValue.IdCln,
                         picture: response.picture.data.url,
                         social: 'Facebook'
@@ -111,6 +113,8 @@ class Login extends Component{
                         CelularCln: currentValue.CelularCln,
                         TelResidenciaCln: currentValue.TelResidenciaCln,
                         DocuCln: currentValue.DocuCln,
+                        DirCln: currentValue.DirCln,
+                        CiuCln: currentValue.CiuCln,
                         idUser: currentValue.IdCln,
                         picture: response.profileObj.imageUrl,
                         social: 'google'
