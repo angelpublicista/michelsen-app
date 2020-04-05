@@ -19,6 +19,7 @@ class MisCreditos extends Component{
         }
 
         this.convertCurrency = this.convertCurrency.bind(this);
+        this.creditState = this.creditState.bind(this);
     }
     
 
@@ -47,6 +48,19 @@ class MisCreditos extends Component{
         }
 
         
+    }
+
+    creditState(number){
+        switch (number) {
+            case 1:
+                return(
+                    "En Mora"
+                )
+                break;
+        
+            default:
+                break;
+        }
     }
 
     convertCurrency(value){
