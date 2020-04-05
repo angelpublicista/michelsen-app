@@ -24,14 +24,13 @@ export const getUserById = ( state = [], action) => {
     }
 }
 
-
-export const getLoginUser= ( state = [], action) => {
+export const getCreditUserById = ( state = [], action) => {
     switch (action.type){
-        case 'START_LOGIN_USER':
+        case 'START_GET_CREDIT_USER_BY_ID':
             return action;
-        case 'COMPLETE_LOGIN_USER':
+        case 'COMPLETE_GET_CREDIT_USER_BY_ID':
             return action;
-        case 'ERROR_LOGIN_USER':
+        case 'ERROR_GET_CREDIT_USER_BY_ID':
             return action;
         default:
             return state;

@@ -56,20 +56,9 @@ const useStyles = makeStyles({
     },
   });
 
-  function createData(codigo, vlrAprobado, estado, fhVenc) {
-    return { codigo, vlrAprobado, estado, fhVenc};
-  }
-
-  const rows = [
-    createData('48277', "$3.000.000", "En Mora", "24/04/20"),
-    createData('13125', "$3.000.000", "En Mora", "24/04/20"),
-    createData('10552', "$3.000.000", "En Mora", "24/04/20"),
-    createData('19615', "$3.000.000", "En Mora", "24/04/20"),
-    createData('14870', "$3.000.000", "En Mora", "24/04/20"),
-  ];
-
-export default function ContentCredits(){
+export default function ContentCredits(props){
     const classes = useStyles();
+    const rows = props.credits;
 
     return(
         <div className="content-section content-credits">
@@ -127,7 +116,7 @@ export default function ContentCredits(){
 
                
                 <Grid item xs={12}>
-                    <TableContainer component={Paper}>
+                    <TableContainer component={Paper} className="tableResponsive">
                         <CardHeader title="TODOS MIS CRÉDITOS" className={classes.cardHeader}></CardHeader>
                         <Table className={classes.table} aria-label="simple table">
                             <TableHead>
@@ -140,15 +129,15 @@ export default function ContentCredits(){
                             </TableHead>
                             <TableBody>
                             {rows.map((row) => (
-                                <TableRow key={row.codigo}>
+                                <TableRow key={row.NumCrd}>
                                 <TableCell component="th" scope="row">
-                                    <Link to={"/mis-creditos/credito/"+row.codigo}>
-                                        {row.codigo}
+                                    <Link to={"/mis-creditos/credito/"+row.NumCrd}>
+                                        {row.NumCrd}
                                     </Link>
                                 </TableCell>
-                                <TableCell align="right">{row.vlrAprobado}</TableCell>
-                                <TableCell align="right">{row.estado}</TableCell>
-                                <TableCell align="right">{row.fhVenc}</TableCell>
+                                <TableCell align="right">{row.TltDesembolsadoCrd}</TableCell>
+                                <TableCell align="right">{row.EstadoCrd}</TableCell>
+                                <TableCell align="right">{row.FchCrd}</TableCell>
                                 </TableRow>
                             ))}
                             </TableBody>

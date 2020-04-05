@@ -43,29 +43,24 @@ export const getUserById = (userId) =>{
     }
 }
 
-//Login users
+//Get credits by id user
+const startGetCreditUserById = () =>{ return {type: 'START_GET_CREDIT_USER_BY_ID', ready: false}}
+const completeGetCreditUserById = (data) => { return {type: 'COMPLETE_GET_CREDIT_USER_BY_ID', data}}
+const errorGetCreditUserById = (err) => { return {type: 'ERROR_GET_CREDIT_USER_BY_ID', err}}
 
-const startLoginUser = () =>{ return {type: 'START_LOGIN_USER', ready: false}}
-const completeLoginUser = (data) => { return {type: 'COMPLETE_LOGIN_USER', data}}
-const errorLoginUser = (err) => { return {type: 'ERROR_LOGIN_USER', err}}
-
-export const getLoginUser = (userMail, userPass) =>{
+export const getCreditUserById = (userId) =>{
     return (dispatch, getState) => {
-        dispatch(startLoginUser());
+        dispatch(startGetCreditUserById());
         //TODO request con axios
-        http.get('clientes/login/"'+userMail+'"/'+userPass+'/')
+        http.get('creditos/'+userId+'/')
         .then((response) => {
-            if(response.data){
-                dispatch(completeLoginUser(response.data));
-            } else {
-                return null;
-            }
+            if(response.data)
+              dispatch(completeGetCreditUserById(response.data));
         })
         .catch((err) => {
-            dispatch(errorLoginUser(err));
+            dispatch(errorGetCreditUserById(err));
         })
     }
 }
-
 
 
