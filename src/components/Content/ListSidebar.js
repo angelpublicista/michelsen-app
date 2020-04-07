@@ -37,7 +37,8 @@ const useStyles = makeStyles({
     },
 
     menuItem:{
-        padding: theme.spacing(2)
+        padding: theme.spacing(2),
+        cursor: "pointer"
     },
 
     iconSidebar:{

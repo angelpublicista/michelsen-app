@@ -1,0 +1,18 @@
+body{
+    overflow-x: hidden;
+}
+
+.loader-page{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (max-width: 480px){
+    .tableResponsive{
+        max-width: 320px;
+    }
+}

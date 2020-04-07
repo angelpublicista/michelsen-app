@@ -82,10 +82,10 @@ function ContentCredit(props){
                         <Table className={classes.table} aria-label="simple table">
                             <TableHead>
                             <TableRow>
-                                <TableCell>CÓDIGO</TableCell>
-                                <TableCell align="right">VALOR APROBADO</TableCell>
+                                <TableCell>MES / CUOTA</TableCell>
+                                <TableCell align="right">VALOR A PAGAR</TableCell>
                                 <TableCell align="right">ESTADO</TableCell>
-                                <TableCell align="right">FECHA VENCIMIENTO</TableCell>
+                                <TableCell align="right">FECHA LÍMITE PAGO</TableCell>
                             </TableRow>
                             </TableHead>
                             <TableBody>

@@ -31,7 +31,6 @@ class ImageProfile extends Component{
     }
 
     render(){
-        console.log(this.state.imageProfile)
         if (this.state.imageProfile) {
             return(
                 <Avatar alt="Remy Sharp" src={this.state.imageProfile} />
