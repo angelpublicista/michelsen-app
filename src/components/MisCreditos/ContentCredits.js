@@ -66,7 +66,7 @@ const useStyles = makeStyles({
 
 function ContentCredits(props){
     const classes = useStyles();
-    const {history, credits, alertUser, saldo, nameUser, emailUser} = props;
+    const {history, credits, alertUser, saldo, data} = props;
     const rows = credits;
 
 
@@ -83,8 +83,8 @@ function ContentCredits(props){
         doc.setFontSize(9)
         doc.text(20, 30, `Fecha: ${fechaActual}`);
         doc.text(20, 35, `Hora: ${horaActual}`);
-        doc.text(20, 40, `Nombre: ${nameUser}`);
-        doc.text(20, 45, `Email: ${emailUser}`);
+        doc.text(20, 40, `Nombre: ${data.NomCln + " " + data.PrApellidoCln}`);
+        doc.text(20, 45, `Email: ${data.emailCln}`);
 
         //Encabezados tabla
         //doc.line(20, 56, 100, 56); 

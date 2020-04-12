@@ -17,7 +17,6 @@ class MisCreditos extends Component{
             idUser: '',
             mobilePhone: '',
             fixedPhone: '',
-            docUser: '',
             city: ''
         }
     }
@@ -37,12 +36,11 @@ class MisCreditos extends Component{
                 nameUser: fbData.NomCln,
                 lastNameUser: fbData.PrApellidoCln + " " + fbData.SgApellidoCln,
                 emailUser: fbData.emailCln,
-                addressUser: fbData.DirCln,
+                addressUser: fbData.DirResidenciaCln,
                 idUser: fbData.IdCln,
                 mobilePhone: fbData.CelularCln,
                 fixedPhone: fbData.TelResidenciaCln,
-                docUser: fbData.DocuCln,
-                city: fbData.CiuCln
+                city: fbData.CodCiuResidenciaCln
                 
             })
         } else if(googleData){
@@ -50,24 +48,22 @@ class MisCreditos extends Component{
                 nameUser: googleData.NomCln,
                 lastNameUser: googleData.PrApellidoCln + " " + googleData.SgApellidoCln,
                 emailUser: googleData.emailCln,
-                addressUser: googleData.DirCln,
+                addressUser: googleData.DirResidenciaCln,
                 idUser: googleData.IdCln,
                 mobilePhone: googleData.CelularCln,
                 fixedPhone: googleData.TelResidenciaCln,
-                docUser: googleData.DocuCln,
-                city: googleData.CiuCln
+                city: googleData.CodCiuResidenciaCln
             })
         } else if(loginData){
             this.setState({
                 nameUser: loginData.NomCln,
                 lastNameUser: loginData.PrApellidoCln + " " + loginData.SgApellidoCln,
                 emailUser: loginData.emailCln,
-                addressUser: loginData.DirCln,
+                addressUser: loginData.DirResidenciaCln,
                 idUser: loginData.IdCln,
                 mobilePhone: loginData.CelularCln,
                 fixedPhone: loginData.TelResidenciaCln,
-                docUser: loginData.DocuCln,
-                city: loginData.CiuCln   
+                city: loginData.CodCiuResidenciaCln   
             })
         }
     }
@@ -83,10 +79,9 @@ class MisCreditos extends Component{
                             lastNameUser={this.state.lastNameUser}
                             emailUser={this.state.emailUser}
                             addressUser={this.state.addressUser}
-                            idUser={this.state.idUser}
                             mobilePhone={this.state.mobilePhone}
                             fixedPhone={this.state.fixedPhone}
-                            docUser={this.state.docUser}
+                            docUser={this.state.idUser}
                             city={this.state.city}
                         />} 
                         />

@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import SignIn from './../components/Login/SignIn';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { getLoginUser, getUsers } from '../actions';
+import { getUsers } from '../actions';
 import {Redirect} from 'react-router-dom';
 
 class Login extends Component{
@@ -47,7 +47,7 @@ class Login extends Component{
 
        if(this.props.users.data){
            this.props.users.data.map((currentValue, index, array) => {
-               if(currentValue.emailCln === correo && currentValue.DocuCln === clave){
+               if(currentValue.emailCln === correo && currentValue.IdCln === clave){
                     localStorage.setItem("loginData", JSON.stringify(currentValue))
                     this.setState({
                         isLogged: true,
@@ -76,10 +76,9 @@ class Login extends Component{
                         SgApellidoCln: currentValue.SgApellidoCln,
                         CelularCln: currentValue.CelularCln,
                         TelResidenciaCln: currentValue.TelResidenciaCln,
-                        DocuCln: currentValue.DocuCln,
-                        DirCln: currentValue.DirCln,
-                        CiuCln: currentValue.CiuCln,
-                        idUser: currentValue.IdCln,
+                        DirResidenciaCln: currentValue.DirResidenciaCln,
+                        CodCiuResidenciaCln: currentValue.CodCiuResidenciaCln,
+                        IdCln: currentValue.IdCln,
                         picture: response.picture.data.url,
                         social: 'Facebook'
                     }));
@@ -111,10 +110,9 @@ class Login extends Component{
                         SgApellidoCln: currentValue.SgApellidoCln,
                         CelularCln: currentValue.CelularCln,
                         TelResidenciaCln: currentValue.TelResidenciaCln,
-                        DocuCln: currentValue.DocuCln,
-                        DirCln: currentValue.DirCln,
-                        CiuCln: currentValue.CiuCln,
-                        idUser: currentValue.IdCln,
+                        DirResidenciaCln: currentValue.DirResidenciaCln,
+                        CodCiuResidenciaCln: currentValue.CodCiuResidenciaCln,
+                        IdCln: currentValue.IdCln,
                         picture: response.profileObj.imageUrl,
                         social: 'google'
                     }));

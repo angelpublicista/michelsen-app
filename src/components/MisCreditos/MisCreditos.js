@@ -14,19 +14,15 @@ import {BeatLoader} from 'react-spinners';
 
 
 class MisCreditos extends Component{
-    constructor(){
-        super();
-        this.state={
-            idUser : '',
-            nameUser: '',
-            emailUser: '',
-            stateData: true
+    constructor(props){
+        super(props);
+        this.state={    
+            data: []
         }
 
         this.convertCurrency = this.convertCurrency.bind(this);
         this.creditState = this.creditState.bind(this);
         this.creditStateSeverity = this.creditStateSeverity.bind(this);
-        this.sayState = this.sayState.bind(this);
     }
 
     creditState(number){
@@ -80,48 +76,32 @@ class MisCreditos extends Component{
     }
     
 
-    componentDidMount(){
+    componentWillMount(){
 
         let fbData = JSON.parse(localStorage.getItem('fbData'));
         let googleData = JSON.parse(localStorage.getItem('googleData'));
         let loginData = JSON.parse(localStorage.getItem('loginData'));
     
         if(fbData){
-            this.setState({
-                idUser: fbData.idUser,
-                nameUser: fbData.NomCln + " " + fbData.PrApellidoCln,
-                emailUser: fbData.emailCln
-            })
-            this.props.getCreditUserById(fbData.idUser);
+            this.setState({data: fbData})
         } else if(googleData){
-            this.setState({
-                idUser: googleData.idUser,
-                nameUser: googleData.NomCln + " " + googleData.PrApellidoCln,
-                emailUser: googleData.emailCln
-            })
-            this.props.getCreditUserById(googleData.idUser);
+            this.setState({data: googleData})
         } else if(loginData){
-            this.setState({
-                idUser: loginData.idUser,
-                nameUser: loginData.NomCln + " " + loginData.PrApellidoCln,
-                emailUser: loginData.emailCln
-            })
-            this.props.getCreditUserById(loginData.IdCln);
+            this.setState({data: loginData})
         }
-        
-    }
-
-    sayState(value){
-        this.setState({
-            stateData: value
-        })
     }
     
+
+    componentDidMount(){
+        this.props.getCreditUserById(this.state.data.IdCln);
+    }
+
     render(){
         let credits = [];
         let alertUser = ''
         let sumCredits = 0
         let payCredits = 0
+
 
         if(this.props.users.data){
            this.props.users.data.map((currentValue, index, array)=>{
@@ -150,10 +130,6 @@ class MisCreditos extends Component{
 
         let difCredits = sumCredits - payCredits
         difCredits = this.convertCurrency(difCredits)
-
-        //Generate PDF
-
-        
         
         return(
             <div className="mis-creditos">
@@ -162,10 +138,8 @@ class MisCreditos extends Component{
                     section={<ContentCredits 
                                 credits={credits} 
                                 alertUser={alertUser} 
-                                startLoader={this.props.users.type} 
                                 saldo={difCredits}
-                                nameUser={this.state.nameUser}
-                                emailUser={this.state.emailUser}
+                                data={this.state.data}
                             />} 
                 />
             </div>
