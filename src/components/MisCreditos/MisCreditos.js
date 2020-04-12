@@ -17,7 +17,8 @@ class MisCreditos extends Component{
     constructor(props){
         super(props);
         this.state={    
-            data: []
+            data: [],
+            creditsUser: []
         }
 
         this.convertCurrency = this.convertCurrency.bind(this);
@@ -81,7 +82,7 @@ class MisCreditos extends Component{
         let fbData = JSON.parse(localStorage.getItem('fbData'));
         let googleData = JSON.parse(localStorage.getItem('googleData'));
         let loginData = JSON.parse(localStorage.getItem('loginData'));
-    
+        
         if(fbData){
             this.setState({data: fbData})
         } else if(googleData){
