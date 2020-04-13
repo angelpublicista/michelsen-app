@@ -19,6 +19,7 @@ import jsPDF from 'jspdf';
 import moment from 'moment';
 import 'moment/locale/es';
 import PictureAsPdfIcon from '@material-ui/icons/PictureAsPdf';
+import {BeatLoader} from 'react-spinners';
 
 
 
@@ -66,7 +67,7 @@ const useStyles = makeStyles({
 
 function ContentCredits(props){
     const classes = useStyles();
-    const {history, credits, alertUser, saldo, data} = props;
+    const {history, credits, saldo, data, creditState} = props;
     const rows = credits;
 
 
@@ -110,129 +111,148 @@ function ContentCredits(props){
     }
 
     const handleInfoUser = () =>{
-        if (!alertUser) {
-            return(
-                <React.Fragment>
-                
-                <Grid item xs={12} sm={4}>
-                    <Card className={classes.root + " card-credit"} variant="outlined">
-                        <CardHeader title="PRÓXIMO PAGO" className={classes.cardHeader}></CardHeader>
-                        <CardContent>
-                            <Typography className={classes.title} color="textSecondary" gutterBottom>
-                            El valor de tu próximo pago es
-                            </Typography>
-                            <Typography variant="h4" component="h2">
-                                $350.000
-                            </Typography>
-                            <Typography className={classes.pos} color="textSecondary">
-                            cop
-                            </Typography>
-                        </CardContent>
-                    </Card>
-                </Grid>
 
-                <Grid item xs={12} sm={4}>
-                    <Card className={classes.root + " card-credit"} variant="outlined">
-                        <CardHeader title="ÚLTIMO PAGO" className={classes.cardHeader}></CardHeader>
-                        <CardContent>
-                            <Typography className={classes.title} color="textSecondary" gutterBottom>
-                            Tu último pago realizado fue
-                            </Typography>
-                            <Typography variant="h4" component="h2">
-                                $350.000
-                            </Typography>
-                            <Typography className={classes.pos} color="textSecondary">
-                            cop
-                            </Typography>
-                        </CardContent>
-                    </Card>
-                </Grid>
+        switch (creditState) {
+            case "START_GET_CREDIT_USER_BY_ID":
+                return(
+                    <div className="loader-page">
+                        <BeatLoader
+                            color="#275385"
+                            loading={true}
+                        />
+                    </div>
+                )
+                break;
+            
+            case "COMPLETE_GET_CREDIT_USER_BY_ID":
 
-                <Grid item xs={12} sm={4}>
-                    <Card className={classes.root + " card-credit"} variant="outlined">
-                        <CardHeader title="DEUDA ACTUAL" className={classes.cardHeader}></CardHeader>
-                        <CardContent>
-                            <Typography className={classes.title} color="textSecondary" gutterBottom>
-                                Tu saldo total actual es de
-                            </Typography>
-                            <Typography variant="h4" component="h2">
-                                {saldo}
-                            </Typography>
-                            <Typography className={classes.pos} color="textSecondary">
-                            cop
-                            </Typography>
-                        </CardContent>
-                    </Card>
-                </Grid>
+                return(
+                    <React.Fragment>
+                        <Grid item xs={12} sm={4}>
+                            <Card className={classes.root + " card-credit"} variant="outlined">
+                                <CardHeader title="PRÓXIMO PAGO" className={classes.cardHeader}></CardHeader>
+                                <CardContent>
+                                    <Typography className={classes.title} color="textSecondary" gutterBottom>
+                                    El valor de tu próximo pago es
+                                    </Typography>
+                                    <Typography variant="h4" component="h2">
+                                        $350.000
+                                    </Typography>
+                                    <Typography className={classes.pos} color="textSecondary">
+                                    cop
+                                    </Typography>
+                                </CardContent>
+                            </Card>
+                        </Grid>
+            
+                        <Grid item xs={12} sm={4}>
+                            <Card className={classes.root + " card-credit"} variant="outlined">
+                                <CardHeader title="ÚLTIMO PAGO" className={classes.cardHeader}></CardHeader>
+                                <CardContent>
+                                    <Typography className={classes.title} color="textSecondary" gutterBottom>
+                                    Tu último pago realizado fue
+                                    </Typography>
+                                    <Typography variant="h4" component="h2">
+                                        $350.000
+                                    </Typography>
+                                    <Typography className={classes.pos} color="textSecondary">
+                                    cop
+                                    </Typography>
+                                </CardContent>
+                            </Card>
+                        </Grid>
+            
+                        <Grid item xs={12} sm={4}>
+                            <Card className={classes.root + " card-credit"} variant="outlined">
+                                <CardHeader title="DEUDA ACTUAL" className={classes.cardHeader}></CardHeader>
+                                <CardContent>
+                                    <Typography className={classes.title} color="textSecondary" gutterBottom>
+                                        Tu saldo total actual es de
+                                    </Typography>
+                                    <Typography variant="h4" component="h2">
+                                        {saldo}
+                                    </Typography>
+                                    <Typography className={classes.pos} color="textSecondary">
+                                    cop
+                                    </Typography>
+                                </CardContent>
+                            </Card>
+                        </Grid>
+            
+                    
+                        <Grid item xs={12} id="tabla-creditos">
+                            <TableContainer component={Paper} className="tableResponsive" >
+                                <CardHeader title="TODOS MIS CRÉDITOS" className={classes.cardHeader}></CardHeader>
+                                <Table className={classes.table} aria-label="simple table">
+                                    <TableHead>
+                                    <TableRow>
+                                        <TableCell>CÓDIGO</TableCell>
+                                        <TableCell align="center">VALOR APROBADO</TableCell>
+                                        <TableCell align="center">PAGADO</TableCell>
+                                        <TableCell align="center">ESTADO</TableCell>
+                                        <TableCell align="center">FECHA VENCIMIENTO</TableCell>
+                                        <TableCell align="center">ACCIONES</TableCell>
+                                    </TableRow>
+                                    </TableHead>
+                                    <TableBody>
+                                    {rows.map((row) => (
+                                        <TableRow key={row.NumCrd}>
+                                        <TableCell component="th" scope="row">
+                                            <Button color="primary" onClick={()=>history.push("/mis-creditos/credito/"+row.NumCrd)}>
+                                                {row.NumCrd}
+                                            </Button>
+                                        </TableCell>
+                                        <TableCell align="center">{row.TltDesembolsadoCrd}</TableCell>
+                                        <TableCell align="center">{row.TltAbonadoCapitalCrd}</TableCell>
+                                        <TableCell align="center">
+                                            <Alert severity={row.severity}>
+                                                {row.EstadoCrd}
+                                            </Alert>
+                                        </TableCell>
+                                        <TableCell align="center">{row.FchCrd}</TableCell>
+                                        <TableCell align="center">
+                                            <IconButton color="primary" 
+                                                onClick={()=>history.push("/mis-creditos/credito/"+row.NumCrd)}
+                                                title="ver"
+                                            >
+                                                <VisibilityIcon/>
+                                            </IconButton>  
+                                        </TableCell>
+                                        </TableRow>
+                                    ))}
+                                    </TableBody>
+                                </Table>
+                            </TableContainer>
+                        </Grid>
+                        <Grid item xs={12}>
+                            <Button
+                                onClick={generatePDF}
+                                color="primary"
+                                startIcon={<PictureAsPdfIcon/>}
+                                variant="contained"
+                            >
+                                DESCARGAR PDF
+                            </Button>
+            
+                        </Grid>
+                    </React.Fragment>
+                        
+                    )
 
-               
-                <Grid item xs={12} id="tabla-creditos">
-                    <TableContainer component={Paper} className="tableResponsive" >
-                        <CardHeader title="TODOS MIS CRÉDITOS" className={classes.cardHeader}></CardHeader>
-                        <Table className={classes.table} aria-label="simple table">
-                            <TableHead>
-                            <TableRow>
-                                <TableCell>CÓDIGO</TableCell>
-                                <TableCell align="center">VALOR APROBADO</TableCell>
-                                <TableCell align="center">PAGADO</TableCell>
-                                <TableCell align="center">ESTADO</TableCell>
-                                <TableCell align="center">FECHA VENCIMIENTO</TableCell>
-                                <TableCell align="center">ACCIONES</TableCell>
-                            </TableRow>
-                            </TableHead>
-                            <TableBody>
-                            {rows.map((row) => (
-                                <TableRow key={row.NumCrd}>
-                                <TableCell component="th" scope="row">
-                                    <Button color="primary" onClick={()=>history.push("/mis-creditos/credito/"+row.NumCrd)}>
-                                        {row.NumCrd}
-                                    </Button>
-                                </TableCell>
-                                <TableCell align="center">{row.TltDesembolsadoCrd}</TableCell>
-                                <TableCell align="center">{row.TltAbonadoCapitalCrd}</TableCell>
-                                <TableCell align="center">
-                                    <Alert severity={row.severity}>
-                                        {row.EstadoCrd}
-                                    </Alert>
-                                </TableCell>
-                                <TableCell align="center">{row.FchCrd}</TableCell>
-                                <TableCell align="center">
-                                    <IconButton color="primary" 
-                                        onClick={()=>history.push("/mis-creditos/credito/"+row.NumCrd)}
-                                        title="ver"
-                                    >
-                                        <VisibilityIcon/>
-                                    </IconButton>  
-                                </TableCell>
-                                </TableRow>
-                            ))}
-                            </TableBody>
-                        </Table>
-                    </TableContainer>
-                </Grid>
-                <Grid item xs={12}>
-                    <Button
-                        onClick={generatePDF}
-                        color="primary"
-                        startIcon={<PictureAsPdfIcon/>}
-                        variant="contained"
-                    >
-                        DESCARGAR PDF
-                    </Button>
+                break;
+        
+            case "ERROR_GET_CREDIT_USER_BY_ID":
 
-                </Grid>
-            </React.Fragment>
-                
-            )   
-        } else {
-            return(
-                <Grid item xs={12}>
-                    <Alert severity="error">
-                        <AlertTitle>¡VAYA!</AlertTitle>
-                        {alertUser}
-                    </Alert>
-                </Grid> 
-            )
+                return(
+                    <Grid item xs={12}>
+                        <Alert severity="error">
+                            <AlertTitle>¡VAYA!</AlertTitle>
+                            No tienes créditos registrados o no podemos acceder a tu información
+                        </Alert>
+                    </Grid>
+                )
+
+                break;
         }
     }
 

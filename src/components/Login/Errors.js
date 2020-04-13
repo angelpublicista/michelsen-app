@@ -3,7 +3,6 @@ import Alert from '@material-ui/lab/Alert';
 
 class Errors extends Component{
     render(){
-        console.log(this.props.validate)
         if (this.props.validate) {
           return(null)
         } else {

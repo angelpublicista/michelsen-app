@@ -8,9 +8,7 @@ import { bindActionCreators } from 'redux';
 import { getCreditUserById } from './../../actions';
 import moment from 'moment';
 import 'moment/locale/es';
-import {BeatLoader} from 'react-spinners';
-
-
+import {creditState, creditStateSeverity, convertCurrency} from './../../assets/js/helpers';
 
 
 class MisCreditos extends Component{
@@ -20,65 +18,14 @@ class MisCreditos extends Component{
             data: [],
             creditsUser: []
         }
-
-        this.convertCurrency = this.convertCurrency.bind(this);
-        this.creditState = this.creditState.bind(this);
-        this.creditStateSeverity = this.creditStateSeverity.bind(this);
     }
 
-    creditState(number){
-        let crState = ''
-        let stNumber = parseInt(number)
-        switch (stNumber) {
-            case 1:
-                crState = "Pagado";
-                break;
-            case 3:
-                crState = "En mora";
-                break;
-            case 6:
-                crState = "Activo";
-                break;
-        }
-
-        return crState;
-    }
-
-    creditStateSeverity(number){
-        let crState = ''
-        let stNumber = parseInt(number)
-        switch (stNumber) {
-            case 1:
-                crState = "info";
-                break;
-            case 3:
-                crState = "error";
-                break;
-            case 6:
-                crState = "success";
-                break;
-        }
-
-        return crState;
-    }
-
-    convertCurrency(value){
-        let updateValue = value
-        const formatterPeso = new Intl.NumberFormat('es-CO', {
-            style: 'currency',
-            currency: 'COP',
-            minimumFractionDigits: 0
-        })
-        
-        updateValue = parseInt(updateValue)
-        updateValue = formatterPeso.format(updateValue)
-
-        return updateValue;
+    componentWillMount(){
+        this.getData();
     }
     
 
-    componentWillMount(){
-
+    getData = () => {
         let fbData = JSON.parse(localStorage.getItem('fbData'));
         let googleData = JSON.parse(localStorage.getItem('googleData'));
         let loginData = JSON.parse(localStorage.getItem('loginData'));
@@ -91,46 +38,54 @@ class MisCreditos extends Component{
             this.setState({data: loginData})
         }
     }
-    
 
     componentDidMount(){
-        this.props.getCreditUserById(this.state.data.IdCln);
+        this.getCredits();
     }
 
+    getCredits = () => {
+        try{
+            let infoData = this.state.data;
+            this.props.getCreditUserById(infoData.IdCln);
+            this.setState({active: true})
+        }
+
+        catch(err){
+            console.log(`No se pueden mostrar créditos ${err}`)
+            this.setState({active: false})
+        }
+        
+     };
+     
     render(){
         let credits = [];
-        let alertUser = ''
         let sumCredits = 0
         let payCredits = 0
 
-
         if(this.props.users.data){
-           this.props.users.data.map((currentValue, index, array)=>{
-                sumCredits =  sumCredits + parseInt(currentValue.TltDesembolsadoCrd)
-                payCredits = payCredits + parseInt(currentValue.TltAbonadoCapitalCrd)
-           })
+            this.props.users.data.map((currentValue, index, array)=>{
+                    sumCredits =  sumCredits + parseInt(currentValue.TltDesembolsadoCrd)
+                    payCredits = payCredits + parseInt(currentValue.TltAbonadoCapitalCrd)
+            })
             
-
-           credits = this.props.users.data.map((currentValue, index, array)=>{
-              moment.locale('es');
-              return(
-                  {
-                     NumCrd :  currentValue.NumCrd,
-                     TltDesembolsadoCrd: this.convertCurrency(currentValue.TltDesembolsadoCrd),
-                     TltAbonadoCapitalCrd: this.convertCurrency(currentValue.TltAbonadoCapitalCrd),
-                     EstadoCrd: this.creditState(currentValue.EstadoCrd),
-                     FchCrd: moment(currentValue.FchCrd).format("DD MMMM YYYY"),
-                     severity: this.creditStateSeverity(currentValue.EstadoCrd)
-                  }
-                  
-              )
-           })
-        } else {
-            alertUser = "NO TIENES CRÉDITOS ACTUALMENTE";
-        }
+            credits = this.props.users.data.map((currentValue, index, array)=>{
+                moment.locale('es');
+                return(
+                    {
+                        NumCrd : currentValue.NumCrd,
+                        TltDesembolsadoCrd: convertCurrency(currentValue.TltDesembolsadoCrd),
+                        TltAbonadoCapitalCrd: convertCurrency(currentValue.TltAbonadoCapitalCrd),
+                        EstadoCrd: creditState(currentValue.EstadoCrd),
+                        FchCrd: moment(currentValue.FchCrd).format("DD MMMM YYYY"),
+                        severity: creditStateSeverity(currentValue.EstadoCrd)
+                    }
+                    
+                )
+            }) 
+        }  
 
         let difCredits = sumCredits - payCredits
-        difCredits = this.convertCurrency(difCredits)
+        difCredits = convertCurrency(difCredits)
         
         return(
             <div className="mis-creditos">
@@ -138,13 +93,13 @@ class MisCreditos extends Component{
                     title="Mis créditos" 
                     section={<ContentCredits 
                                 credits={credits} 
-                                alertUser={alertUser} 
                                 saldo={difCredits}
                                 data={this.state.data}
+                                creditState = {this.props.users.type}
                             />} 
                 />
             </div>
-        );
+        );  
     }
 }
 
