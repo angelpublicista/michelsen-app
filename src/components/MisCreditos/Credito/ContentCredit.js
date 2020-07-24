@@ -70,7 +70,9 @@ const useStyles = makeStyles({
 
 function ContentCredit(props){
     const classes = useStyles();
-    const {history, match} = props;
+    const {history, match, plan} = props;
+
+    console.log(plan)
 
     return(
         <div className="content-section content-credits">
