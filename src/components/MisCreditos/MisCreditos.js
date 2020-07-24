@@ -9,6 +9,7 @@ import { getCreditUserById } from './../../actions';
 import moment from 'moment';
 import 'moment/locale/es';
 import {creditState, creditStateSeverity, convertCurrency} from './../../assets/js/helpers';
+import ButtonNewCr from './../ButtonNewCr';
 
 
 class MisCreditos extends Component{
@@ -98,6 +99,8 @@ class MisCreditos extends Component{
                                 creditState = {this.props.users.type}
                             />} 
                 />
+
+                <ButtonNewCr />
             </div>
         );  
     }

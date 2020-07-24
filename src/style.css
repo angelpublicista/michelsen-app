@@ -11,6 +11,12 @@ body{
     align-items: center;
 }
 
+.btn-new-cr{
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+}
+
 @media (max-width: 480px){
     .tableResponsive{
         max-width: 320px;

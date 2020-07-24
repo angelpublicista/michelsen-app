@@ -64,24 +64,3 @@ export const getCreditUserById = (userId) =>{
 }
 
 
-//Get plains by credit id
-const startGetPlanByCreditId = () =>{ return {type: 'START_GET_PLAN_BY_CREDIT_ID', ready: false}}
-const completeGetPlanByCreditId = (data) => { return {type: 'COMPLETE_GET_PLAN_BY_CREDIT_ID', data}}
-const errorGetPlanByCreditId = (err) => { return {type: 'ERROR_GET_PLAN_BY_CREDIT_ID', err}}
-
-export const getPlanByCreditId = (creditId) =>{
-    return (dispatch, getState) => {
-        dispatch(startGetPlanByCreditId());
-        //TODO request con axios
-        http.get('creditos/'+userId+'/')
-        .then((response) => {
-            if(response.data)
-              dispatch(completeGetPlanByCreditId(response.data));
-        })
-        .catch((err) => {
-            dispatch(errorGetPlanByCreditId(err));
-        })
-    }
-}
-
-
