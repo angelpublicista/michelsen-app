@@ -101,8 +101,8 @@ function ContentCredits(props){
         for (const item of rows) {
             numero_inicial_fila = numero_inicial_fila + 10
             doc.text(20, numero_inicial_fila, `${item.NumCrd}`)
-            doc.text(60, numero_inicial_fila, `${item.TltDesembolsadoCrd}`)
-            doc.text(120, numero_inicial_fila, `${item.TltAbonadoCapitalCrd}`)
+            doc.text(60, numero_inicial_fila, `${item.TtlDesembolsadoCrd}`)
+            doc.text(120, numero_inicial_fila, `${item.TtlAbonadoCapitalCrd}`)
             doc.text(160, numero_inicial_fila, `${item.EstadoCrd}`)
             doc.text(200, numero_inicial_fila, `${item.FchCrd}`)
         }
@@ -202,8 +202,8 @@ function ContentCredits(props){
                                                 {row.NumCrd}
                                             </Button>
                                         </TableCell>
-                                        <TableCell align="center">{row.TltDesembolsadoCrd}</TableCell>
-                                        <TableCell align="center">{row.TltAbonadoCapitalCrd}</TableCell>
+                                        <TableCell align="center">{row.TtlDesembolsadoCrd}</TableCell>
+                                        <TableCell align="center">{row.TtlAbonadoCapitalCrd}</TableCell>
                                         <TableCell align="center">
                                             <Alert severity={row.severity}>
                                                 {row.EstadoCrd}

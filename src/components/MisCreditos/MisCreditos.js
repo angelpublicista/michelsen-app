@@ -65,8 +65,8 @@ class MisCreditos extends Component{
 
         if(this.props.users.data){
             this.props.users.data.map((currentValue, index, array)=>{
-                    sumCredits =  sumCredits + parseInt(currentValue.TltDesembolsadoCrd)
-                    payCredits = payCredits + parseInt(currentValue.TltAbonadoCapitalCrd)
+                    sumCredits =  sumCredits + parseInt(currentValue.TtlDesembolsadoCrd)
+                    payCredits = payCredits + parseInt(currentValue.TtlAbonadoCapitalCrd)
             })
             
             credits = this.props.users.data.map((currentValue, index, array)=>{
@@ -74,8 +74,8 @@ class MisCreditos extends Component{
                 return(
                     {
                         NumCrd : currentValue.NumCrd,
-                        TltDesembolsadoCrd: convertCurrency(currentValue.TltDesembolsadoCrd),
-                        TltAbonadoCapitalCrd: convertCurrency(currentValue.TltAbonadoCapitalCrd),
+                        TtlDesembolsadoCrd: convertCurrency(currentValue.TtlDesembolsadoCrd),
+                        TtlAbonadoCapitalCrd: convertCurrency(currentValue.TtlAbonadoCapitalCrd),
                         EstadoCrd: creditState(currentValue.EstadoCrd),
                         FchCrd: moment(currentValue.FchCrd).format("DD MMMM YYYY"),
                         severity: creditStateSeverity(currentValue.EstadoCrd)
